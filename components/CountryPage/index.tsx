@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import type {CountryPageProps} from "@/pages/country/[countrycode].tsx"
+import type { CountryPageProps } from '@/pages/country/[countryCode]';
 // helpers
 import { useRouter } from 'next/router';
 // styles
@@ -52,7 +52,8 @@ const CountryPage: NextPage<CountryPageProps> = ({ country, borders }) => {
               <DetailsList>
                 <Detail>
                   {/** renders the first native name from the object */}
-                  <span>Native Name:</span> {nativeName[Object.keys(nativeName)[0]]?.common}
+                  <span>Native Name:</span>{' '}
+                  {nativeName ? nativeName[Object.keys(nativeName)[0]]?.common : 'No Native Name'}
                 </Detail>
                 <Detail>
                   <span>Population:</span> {population.toLocaleString()}
@@ -61,24 +62,26 @@ const CountryPage: NextPage<CountryPageProps> = ({ country, borders }) => {
                   <span>Region:</span> {region}
                 </Detail>
                 <Detail>
-                  <span>Sub Region:</span> {subregion}
+                  <span>Sub Region:</span> {subregion || 'No Sub Region'}
                 </Detail>
                 <Detail>
-                  <span>Capital:</span> {capital?.join(', ') || 'None'}
+                  <span>Capital:</span> {capital?.join(', ') || 'No Capital'}
                 </Detail>
               </DetailsList>
               <DetailsList>
                 <Detail>
-                  <span>Top Level Domain:</span> {tld?.join(', ') || 'None'}
+                  <span>Top Level Domain:</span> {tld?.join(', ') || 'No Domain'}
                 </Detail>
                 <Detail>
                   <span>Currencies:</span>{' '}
-                  {Object.values(currencies)
-                    .map(currency => currency.name)
-                    .join(', ')}
+                  {currencies
+                    ? Object.values(currencies)
+                        .map(currency => currency.name)
+                        .join(', ')
+                    : 'No Currencies'}
                 </Detail>
                 <Detail>
-                  <span>Languages:</span> {Object.values(languages).join(', ')}
+                  <span>Languages:</span> {languages ? Object.values(languages).join(', ') : 'No Languages'}
                 </Detail>
               </DetailsList>
             </DetailsContainer>
@@ -90,7 +93,7 @@ const CountryPage: NextPage<CountryPageProps> = ({ country, borders }) => {
                       <Button as="a">{border.name.common}</Button>
                     </Link>
                   ))
-                : 'None'}
+                : 'No Borders'}
             </BordersContainer>
           </RightContainer>
         </CountryContainer>
@@ -99,4 +102,4 @@ const CountryPage: NextPage<CountryPageProps> = ({ country, borders }) => {
   );
 };
 
-export default CountryPage
+export default CountryPage;
