@@ -1,8 +1,9 @@
-import type { NextPage, GetServerSideProps } from 'next';
+import type { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import type { CountryType } from '@/types';
 // helpers
+import { ParsedUrlQuery } from 'querystring';
 import { useRouter } from 'next/router';
-import { getCountriesByCode } from '@/utils';
+import { getCountriesByCode, getAllCountries } from '@/utils';
 // styles
 import {
   Content,
@@ -21,6 +22,11 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import ArrowLeft from '/public/arrow-left.svg';
+
+interface CountryPageParams extends ParsedUrlQuery {
+  countryCode: CountryType["cca2"]
+}
+
 
 interface CountryPageProps {
   country: CountryType;
@@ -50,7 +56,7 @@ const CountryPage: NextPage<CountryPageProps> = ({ country, borders }) => {
         </Button>
         <CountryContainer>
           <FlagContainer>
-            <Image src={flags.svg} layout="responsive" width={700} height={475} alt={`${commonName} flag`} />
+            <Image src={flags.svg} layout="responsive" priority width={700} height={475} alt={`${commonName} flag`} />
           </FlagContainer>
           <RightContainer>
             <Name>{commonName}</Name>
@@ -105,24 +111,27 @@ const CountryPage: NextPage<CountryPageProps> = ({ country, borders }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async context => {
-  const { countryCode } = context.query;
+export const getStaticPaths:GetStaticPaths = async () => {
+  const countries = await getAllCountries()
 
-  let country;
-  let borderCountries;
+  const paths = countries.map((country) => ({
+    params: { countryCode: country.cca2.toLowerCase() }
+  }))
 
-  if (countryCode) {
-    const countryData = await getCountriesByCode([countryCode.toString()]);
+  // fallback: false means pages that don’t have the
+  // correct cca2 will 404.
+  return { paths, fallback: false }
+}
 
-    country = countryData?.[0];
+export const getStaticProps: GetStaticProps = async ({params}) => {
+  const { countryCode } = params as CountryPageParams;
 
-    borderCountries = country?.borders && (await getCountriesByCode(country.borders));
-  }
+  const countryData = await getCountriesByCode([countryCode.toString()]);
 
   return {
     props: {
-      country: country || null,
-      borders: borderCountries?.slice(0, 3) || null, // get the first 3 border countries only
+      country: countryData[0],
+      borders: countryData[0].borders ? await getCountriesByCode(countryData[0].borders) : null
     },
   };
 };
