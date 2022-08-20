@@ -1,0 +1,21 @@
+node_modules
+.next
+/.next/
+/out/
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+.serverless
+sitemap*.xml
+robots.txt
+
+# misc
+.DS_Store
