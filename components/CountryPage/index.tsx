@@ -1,4 +1,3 @@
-import type { NextPage } from 'next';
 import type { CountryPageProps } from '@/pages/country/[countryCode]';
 // helpers
 import { useRouter } from 'next/router';
@@ -21,7 +20,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import ArrowLeft from '/public/arrow-left.svg';
 
-const CountryPage: NextPage<CountryPageProps> = ({ country, borders }) => {
+const CountryPage = ({ country, borders }: CountryPageProps): JSX.Element => {
   const { flag, flags, name, population, region, subregion, capital, tld, currencies, languages } = country;
 
   const { common: commonName, nativeName } = name;

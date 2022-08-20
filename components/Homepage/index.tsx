@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 // types
-import type { NextPage } from 'next';
 import type { CountryType } from '@/types';
 import type { HomepageProps } from '@/pages/index';
 // helpers
@@ -12,7 +11,8 @@ import CountryCard from '@/components/CountryCard';
 import SearchIcon from '/public/search.svg';
 import Select from '@/components/Select';
 
-const HomePage: NextPage<HomepageProps> = ({ countryList }) => {
+const HomePage = ({ countryList }: HomepageProps): JSX.Element => {
+  // states
   const [displayCountries, setDisplayCountries] = useState<CountryType[] | []>(countryList);
   const [search, setSearch] = useState<string | null>();
   const [selectedRegion, setSelectedRegion] = useState('');
