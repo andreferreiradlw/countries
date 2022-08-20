@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import type { NextPage, GetServerSideProps } from 'next';
+import type { NextPage, GetServerSideProps, GetStaticProps } from 'next';
 import type { CountryType } from '@/types';
 // helpers
 import { getAllCountries } from '@/utils';
@@ -59,7 +59,7 @@ const Home: NextPage<HomepageProps> = ({ countryList }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   // fetch all countries
   const countryList = await getAllCountries();
 
