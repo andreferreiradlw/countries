@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+// types
 import type { NextPage, GetStaticProps } from 'next';
 import type { CountryType } from '@/types';
 // helpers

@@ -53,7 +53,6 @@ const RightContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2em;
-  justify-content: center;
 `;
 
 const CountryContainer = styled.div`
