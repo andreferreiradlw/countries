@@ -1,6 +1,9 @@
 {
-  "/_app": "pages/_app.js",
+  "/Homepage.styles": "pages/Homepage.styles.js",
+  "/country/Country.styles": "pages/country/Country.styles.js",
   "/_error": "pages/_error.js",
+  "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js"
+  "/": "pages/index.js",
+  "/country/[countryCode]": "pages/country/[countryCode].js"
 }
