@@ -4,10 +4,10 @@ import { Container, Content, Title } from './Header.styles';
 import Link from 'next/link';
 
 const Header = (): JSX.Element => (
-  <Container>
+  <Container data-testid="headerContainer">
     <Content>
       <Link href="/" passHref>
-        <Title>Where in the world?</Title>
+        <Title data-testid="headerTitle">Where in the world?</Title>
       </Link>
     </Content>
   </Container>

@@ -1,5 +1,5 @@
-import { render, screen } from '@/utils';
 import React from 'react';
+import { render, screen } from '@/utils';
 import CountryCard from '../index';
 import defaultData from './CountryCard.data.json';
 
