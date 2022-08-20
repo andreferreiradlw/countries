@@ -2,12 +2,12 @@ import { useState } from 'react';
 // styles
 import { Container, OptionContainer, Placeholder, List, ListItem } from './Select.styles';
 // components
-import ArrowDown from '/public/arrow-down.svg';
+import ArrowDown from '@/public/arrow-down.svg';
 
 interface SelectProps {
   placeholder: string;
   options: string[];
-  onChange: (value: string) => void;
+  onChange?: (value: string) => void;
 }
 
 const Select = ({ placeholder, options, onChange }: SelectProps): JSX.Element => {
@@ -18,14 +18,14 @@ const Select = ({ placeholder, options, onChange }: SelectProps): JSX.Element =>
 
   const onOptionClicked = (value: string) => () => {
     // fallback
-    onChange(value);
+    if (onChange) onChange(value);
     // update states
     setSelectedOption(value);
     setIsOpen(false);
   };
 
   return (
-    <Container>
+    <Container data-testid="selectContainer">
       <OptionContainer onClick={toggleOpen}>
         <Placeholder>{selectedOption || placeholder}</Placeholder>
         <ArrowDown />
