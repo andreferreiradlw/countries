@@ -2,7 +2,7 @@ import { useState } from 'react';
 // styles
 import { Container, OptionContainer, Placeholder, List, ListItem } from './Select.styles';
 // components
-import ArrowDown from '@/public/arrow-down.svg';
+import ArrowDown from '/public/arrow-down.svg';
 
 interface SelectProps {
   placeholder: string;
@@ -26,14 +26,14 @@ const Select = ({ placeholder, options, onChange }: SelectProps): JSX.Element =>
 
   return (
     <Container data-testid="selectContainer">
-      <OptionContainer onClick={toggleOpen}>
-        <Placeholder>{selectedOption || placeholder}</Placeholder>
+      <OptionContainer onClick={toggleOpen} data-testid="selectOptionContainer">
+        <Placeholder data-testid="selectPlaceholder">{selectedOption || placeholder}</Placeholder>
         <ArrowDown />
       </OptionContainer>
       {isOpen && (
-        <List>
+        <List data-testid="selectOptionList">
           {options.map((option, i) => (
-            <ListItem onClick={onOptionClicked(option)} key={`select-option-${i}-${option}`}>
+            <ListItem onClick={onOptionClicked(option)} key={`select-option-${i}-${option}`} data-testid="selectOption">
               {option}
             </ListItem>
           ))}
