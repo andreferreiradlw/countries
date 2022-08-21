@@ -36,8 +36,8 @@ const CountryPage = ({ country, borders }: CountryPageProps): JSX.Element => {
           href={`data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>${flag}</text></svg>`}
         />
       </Head>
-      <Content>
-        <Button onClick={() => router.back()}>
+      <Content data-testid="countryPageContainer">
+        <Button onClick={() => router.back()} data-testid="countryPageBackBtn">
           <ArrowLeft />
           Go Back
         </Button>
@@ -46,32 +46,32 @@ const CountryPage = ({ country, borders }: CountryPageProps): JSX.Element => {
             <Image src={flags.svg} layout="responsive" priority width={700} height={475} alt={`${commonName} flag`} />
           </FlagContainer>
           <RightContainer>
-            <Name>{commonName}</Name>
+            <Name data-testid="countryPageCommonName">{commonName}</Name>
             <DetailsContainer>
               <DetailsList>
-                <Detail>
+                <Detail data-testid="countryPageNativeName">
                   {/** renders the first native name from the object */}
                   <span>Native Name:</span>{' '}
                   {nativeName ? nativeName[Object.keys(nativeName)[0]]?.common : 'No Native Name'}
                 </Detail>
-                <Detail>
+                <Detail data-testid="countryPagePopulation">
                   <span>Population:</span> {population.toLocaleString()}
                 </Detail>
-                <Detail>
+                <Detail data-testid="countryPageRegion">
                   <span>Region:</span> {region}
                 </Detail>
-                <Detail>
+                <Detail data-testid="countryPageSubRegion">
                   <span>Sub Region:</span> {subregion || 'No Sub Region'}
                 </Detail>
-                <Detail>
+                <Detail data-testid="countryPageCapital">
                   <span>Capital:</span> {capital?.join(', ') || 'No Capital'}
                 </Detail>
               </DetailsList>
               <DetailsList>
-                <Detail>
+                <Detail data-testid="countryPageDomain">
                   <span>Top Level Domain:</span> {tld?.join(', ') || 'No Domain'}
                 </Detail>
-                <Detail>
+                <Detail data-testid="countryPageCurrencies">
                   <span>Currencies:</span>{' '}
                   {currencies
                     ? Object.values(currencies)
@@ -79,7 +79,7 @@ const CountryPage = ({ country, borders }: CountryPageProps): JSX.Element => {
                         .join(', ')
                     : 'No Currencies'}
                 </Detail>
-                <Detail>
+                <Detail data-testid="countryPageLanguages">
                   <span>Languages:</span> {languages ? Object.values(languages).join(', ') : 'No Languages'}
                 </Detail>
               </DetailsList>
@@ -89,7 +89,9 @@ const CountryPage = ({ country, borders }: CountryPageProps): JSX.Element => {
               {borders?.length
                 ? borders?.map((border, i) => (
                     <Link href={`/country/${border.cca2.toLowerCase()}`} passHref key={`border-country-${i}`}>
-                      <Button as="a">{border.name.common}</Button>
+                      <Button as="a" data-testid="countryPageBorder">
+                        {border.name.common}
+                      </Button>
                     </Link>
                   ))
                 : 'No Borders'}

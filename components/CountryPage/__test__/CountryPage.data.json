@@ -1,0 +1,46 @@
+{
+  "country": {
+    "name": {
+      "common": "CountryNameCommon",
+      "official": "CountryNameOfficial",
+      "nativeName": { "eng": { "common": "CountryNativeNameCommon", "official": "CountryNativeNameOfficial" } }
+    },
+    "flags": { "svg": "/CountrySvgFlagUrl" },
+    "flag": "flag",
+    "cca2": "CountryCca2",
+    "population": 123456,
+    "region": "Americas",
+    "subregion": "CountrySubRegion",
+    "capital": ["CountryCapital"],
+    "tld": ["domain_1", "domain_2"],
+    "currencies": { "eur": { "name": "Euro", "symbol": "E" } },
+    "languages": { "eng": "English" },
+    "borders": ["country1", "country2", "country3", "country4"]
+  },
+  "borders": [
+    {
+      "name": {
+        "common": "Border_1"
+      },
+      "cca2": "Border_1_Cca2"
+    },
+    {
+      "name": {
+        "common": "Border_2"
+      },
+      "cca2": "Border_2_Cca2"
+    },
+    {
+      "name": {
+        "common": "Border_3"
+      },
+      "cca2": "Border_3_Cca2"
+    },
+    {
+      "name": {
+        "common": "Border_4"
+      },
+      "cca2": "Border_4_Cca2"
+    }
+  ]
+}
