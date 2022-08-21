@@ -5,9 +5,9 @@ import { Container, FlagContainer, Content, CountryName, CountryDetail } from '.
 import Link from 'next/link';
 import Image from 'next/image';
 
-const CountryCard = ({ name, cca2, flags, population, region, capital }: CountryType): JSX.Element => (
+const CountryCard = ({ name, cca2, flags, population, region, capital, ...rest }: CountryType): JSX.Element => (
   <Link href={`/country/${cca2.toLowerCase()}`} passHref>
-    <Container data-testid="countryCardContainer">
+    <Container data-testid="countryCardContainer" {...rest}>
       <FlagContainer>
         <Image
           src={flags.svg}

@@ -32,14 +32,22 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { countryCode } = params as CountryPageParams;
 
-  const countryData = await getCountriesByCode([countryCode.toString()]);
+  try {
+    const countryData = await getCountriesByCode([countryCode.toString()]);
 
-  return {
-    props: {
-      country: countryData[0],
-      borders: countryData[0]?.borders ? await getCountriesByCode(countryData[0].borders) : null,
-    },
-  };
+    if (!countryData) {
+      return { notFound: true };
+    }
+
+    return {
+      props: {
+        country: countryData[0],
+        borders: countryData[0]?.borders ? await getCountriesByCode(countryData[0].borders) : null,
+      },
+    };
+  } catch (e) {
+    return { notFound: true };
+  }
 };
 
 export default Country;

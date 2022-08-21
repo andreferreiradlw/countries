@@ -1,0 +1,58 @@
+{
+  "countryList": [
+    {
+      "name": {
+        "common": "Peru",
+        "official": "CountryNameOfficial",
+        "nativeName": { "eng": { "common": "CountryNativeNameCommon", "official": "CountryNativeNameOfficial" } }
+      },
+      "flags": { "svg": "/CountrySvgFlagUrl" },
+      "flag": "flag",
+      "cca2": "CountryCca2",
+      "population": 123456,
+      "region": "Americas",
+      "subregion": "CountrySubRegion",
+      "capital": ["CountryCapital"],
+      "tld": ["domain_1", "domain_2"],
+      "currencies": { "eur": { "name": "Euro", "symbol": "E" } },
+      "languages": { "eng": "English" },
+      "borders": ["country1", "country2", "country3", "country4"]
+    },
+    {
+      "name": {
+        "common": "Angola",
+        "official": "CountryNameOfficial",
+        "nativeName": { "eng": { "common": "CountryNativeNameCommon", "official": "CountryNativeNameOfficial" } }
+      },
+      "flags": { "svg": "/CountrySvgFlagUrl" },
+      "flag": "flag",
+      "cca2": "CountryCca2",
+      "population": 123456,
+      "region": "Africa",
+      "subregion": "CountrySubRegion",
+      "capital": ["CountryCapital"],
+      "tld": ["domain_1", "domain_2"],
+      "currencies": { "eur": { "name": "Euro", "symbol": "E" } },
+      "languages": { "eng": "English" },
+      "borders": ["country1", "country2", "country3", "country4"]
+    },
+    {
+      "name": {
+        "common": "Taiwan",
+        "official": "Asia",
+        "nativeName": { "eng": { "common": "CountryNativeNameCommon", "official": "CountryNativeNameOfficial" } }
+      },
+      "flags": { "svg": "/CountrySvgFlagUrl" },
+      "flag": "flag",
+      "cca2": "CountryCca2",
+      "population": 123456,
+      "region": "Americas",
+      "subregion": "CountrySubRegion",
+      "capital": ["CountryCapital"],
+      "tld": ["domain_1", "domain_2"],
+      "currencies": { "eur": { "name": "Euro", "symbol": "E" } },
+      "languages": { "eng": "English" },
+      "borders": ["country1", "country2", "country3", "country4"]
+    }
+  ]
+}

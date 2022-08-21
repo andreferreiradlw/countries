@@ -10,7 +10,7 @@ interface SelectProps {
   onChange?: (value: string) => void;
 }
 
-const Select = ({ placeholder, options, onChange }: SelectProps): JSX.Element => {
+const Select = ({ placeholder, options, onChange, ...rest }: SelectProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
@@ -25,7 +25,7 @@ const Select = ({ placeholder, options, onChange }: SelectProps): JSX.Element =>
   };
 
   return (
-    <Container data-testid="selectContainer">
+    <Container data-testid="selectContainer" {...rest}>
       <OptionContainer onClick={toggleOpen} data-testid="selectOptionContainer">
         <Placeholder data-testid="selectPlaceholder">{selectedOption || placeholder}</Placeholder>
         <ArrowDown />

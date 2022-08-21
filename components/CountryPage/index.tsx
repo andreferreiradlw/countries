@@ -20,7 +20,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import ArrowLeft from '/public/arrow-left.svg';
 
-const CountryPage = ({ country, borders }: CountryPageProps): JSX.Element => {
+const CountryPage = ({ country, borders, ...rest }: CountryPageProps): JSX.Element => {
   const { flag, flags, name, population, region, subregion, capital, tld, currencies, languages } = country;
 
   const { common: commonName, nativeName } = name;
@@ -36,7 +36,7 @@ const CountryPage = ({ country, borders }: CountryPageProps): JSX.Element => {
           href={`data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>${flag}</text></svg>`}
         />
       </Head>
-      <Content data-testid="countryPageContainer">
+      <Content data-testid="countryPageContainer" {...rest}>
         <Button onClick={() => router.back()} data-testid="countryPageBackBtn">
           <ArrowLeft />
           Go Back

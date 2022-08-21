@@ -12,14 +12,18 @@ export interface HomepageProps {
 const Home: NextPage<HomepageProps> = props => <HomePage {...props} />;
 
 export const getStaticProps: GetStaticProps = async () => {
-  // fetch all countries
-  const countryList = await getAllCountries();
+  try {
+    // fetch all countries
+    const countryList = await getAllCountries();
 
-  return {
-    props: {
-      countryList: countryList,
-    },
-  };
+    if (!countryList) {
+      return { notFound: true };
+    }
+
+    return { props: { countryList } };
+  } catch (e) {
+    return { notFound: true };
+  }
 };
 
 export default Home;
